@@ -74,8 +74,7 @@ import {
               </Typography>
 
               <Typography variant="body2" color="text.secondary" paragraph>
-                GYMNY is your ultimate fitness companion, offering personalized workouts, 
-                expert guidance, and a supportive community to help you achieve your fitness goals.
+                Your ultimate fitness companion
               </Typography>
               <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
                 <IconButton color="primary" aria-label="facebook">
@@ -176,24 +175,24 @@ import {
               </Box>
   
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mt: 3 }}>
-                Contact Us
+                Contact Developer
               </Typography>
               <Box sx={{ mb: 1, display: 'flex', alignItems: 'center' }}>
                 <LocationOn color="action" sx={{ mr: 1 }} fontSize="small" />
                 <Typography variant="body2" color="text.secondary">
-                  123 Fitness Street, Workout City, WO 12345
+                  212 Al Bassam Center, Deira, Dubai, UAE
                 </Typography>
               </Box>
               <Box sx={{ mb: 1, display: 'flex', alignItems: 'center' }}>
                 <Phone color="action" sx={{ mr: 1 }} fontSize="small" />
                 <Typography variant="body2" color="text.secondary">
-                  (123) 456-7890
+                  +971 582 417 109
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Email color="action" sx={{ mr: 1 }} fontSize="small" />
                 <Typography variant="body2" color="text.secondary">
-                  info@gymny.com
+                  tinotendazhakata.com
                 </Typography>
               </Box>
             </Grid>

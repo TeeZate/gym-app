@@ -39,7 +39,7 @@ const workouts = [
     category: 'Strength',
     rating: 4.8,
     reviews: 124,
-    image: '/workout-1.jpg'
+    image: '/images/exercises/man.jpg'
   },
   {
     id: 2,
@@ -50,7 +50,7 @@ const workouts = [
     category: 'HIIT',
     rating: 4.6,
     reviews: 98,
-    image: '/workout-2.jpg'
+    image: 'images/exercises/11-Best-HIIT-Workouts-for-Men-Best-HIIT-Workouts-1.jpg'
   },
   {
     id: 3,
@@ -61,7 +61,7 @@ const workouts = [
     category: 'Core',
     rating: 4.5,
     reviews: 87,
-    image: '/workout-3.jpg'
+    image: '/images/exercises/athletic-man-doing-the-plank-for-abs-and-core-royalty-free-image-1608652280.jpg'
   },
   {
     id: 4,
@@ -72,7 +72,7 @@ const workouts = [
     category: 'Strength',
     rating: 4.7,
     reviews: 112,
-    image: '/workout-4.jpg'
+    image: '/images/exercises/upper-body-exercises.jpg'
   },
   {
     id: 5,
@@ -83,7 +83,7 @@ const workouts = [
     category: 'Strength',
     rating: 4.9,
     reviews: 156,
-    image: '/workout-5.jpg'
+    image: '/images/exercises/prevention-loop-051319-opener-1-1-1560270493.jpg'
   },
   {
     id: 6,
@@ -94,7 +94,7 @@ const workouts = [
     category: 'Yoga',
     rating: 4.8,
     reviews: 143,
-    image: '/workout-6.jpg'
+    image: '/images/exercises/jacqueline-fernandez-yoga-meditation-zvyp8m6pwfcubm8x.jpg'
   },
   {
     id: 7,
@@ -105,7 +105,7 @@ const workouts = [
     category: 'HIIT',
     rating: 4.7,
     reviews: 92,
-    image: '/workout-7.jpg'
+    image: '/images/exercises/TABATA-workout-program-rev3-1024x570.gif'
   },
   {
     id: 8,
@@ -116,7 +116,7 @@ const workouts = [
     category: 'Flexibility',
     rating: 4.6,
     reviews: 78,
-    image: '/workout-8.jpg'
+    image: '/images/exercises/hq720.jpg'
   },
 ];
 
@@ -130,7 +130,7 @@ function Workouts() {
   const [level, setLevel] = useState('All Levels');
   const [duration, setDuration] = useState('All');
   const [page, setPage] = useState(1);
-  const workoutsPerPage = 6;
+  const workoutsPerPage = 8;
 
   // Filter workouts based on search and filters
   const filteredWorkouts = workouts.filter(workout => {
@@ -238,74 +238,74 @@ function Workouts() {
         </Box>
 
         {/* Workouts Grid */}
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+            justifyContent: currentWorkouts.length === 0 ? 'center' : 'flex-start',
+          }}
+        >
           {currentWorkouts.length > 0 ? (
             currentWorkouts.map((workout, index) => (
-              <Grid item xs={12} sm={6} md={4} key={workout.id}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+              <motion.div
+                key={workout.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                style={{
+                  flex: '1 1 calc(25% - 24px)', // Adjust for 4 cards per row minus gap
+                  maxWidth: 'calc(25% - 24px)',
+                }}
+              >
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    borderRadius: 3,
+                    overflow: 'hidden',
+                  }}
                 >
-                  <Card 
-                    sx={{ 
-                      height: '100%', 
-                      display: 'flex', 
-                      flexDirection: 'column',
-                      borderRadius: 3,
-                      overflow: 'hidden'
-                    }}
-                  >
-                    <CardActionArea component={RouterLink} to={`/workouts/${workout.id}`}>
-                      <CardMedia
-                        component="img"
-                        height="200"
-                        image={workout.image}
-                        alt={workout.title}
-                      />
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                          <Chip 
-                            label={workout.category} 
-                            size="small" 
-                            color="primary" 
-                            sx={{ borderRadius: 1 }}
-                          />
-                          <Chip 
-                            label={workout.level} 
-                            size="small" 
-                            variant="outlined"
-                            sx={{ borderRadius: 1 }}
-                          />
-                        </Box>
-                        <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
-                          {workout.title}
+                  <CardActionArea component={RouterLink} to={`/workouts/${workout.id}`}>
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={workout.image}
+                      alt={workout.title}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                        <Chip label={workout.category} size="small" color="primary" sx={{ borderRadius: 1 }} />
+                        <Chip label={workout.level} size="small" variant="outlined" sx={{ borderRadius: 1 }} />
+                      </Box>
+                      <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
+                        {workout.title}
+                      </Typography>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                        <Rating value={workout.rating} precision={0.1} size="small" readOnly />
+                        <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+                          ({workout.reviews})
                         </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                          <Rating value={workout.rating} precision={0.1} size="small" readOnly />
-                          <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
-                            ({workout.reviews})
+                      </Box>
+                      <Box sx={{ display: 'flex', mt: 2 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', mr: 3 }}>
+                          <AccessTime fontSize="small" color="action" sx={{ mr: 0.5 }} />
+                          <Typography variant="body2" color="text.secondary">
+                            {workout.duration}
                           </Typography>
                         </Box>
-                        <Box sx={{ display: 'flex', mt: 2 }}>
-                          <Box sx={{ display: 'flex', alignItems: 'center', mr: 3 }}>
-                            <AccessTime fontSize="small" color="action" sx={{ mr: 0.5 }} />
-                            <Typography variant="body2" color="text.secondary">
-                              {workout.duration}
-                            </Typography>
-                          </Box>
-                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <LocalFireDepartment fontSize="small" color="error" sx={{ mr: 0.5 }} />
-                            <Typography variant="body2" color="text.secondary">
-                              {workout.calories} cal
-                            </Typography>
-                          </Box>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <LocalFireDepartment fontSize="small" color="error" sx={{ mr: 0.5 }} />
+                          <Typography variant="body2" color="text.secondary">
+                            {workout.calories} cal
+                          </Typography>
                         </Box>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </motion.div>
-              </Grid>
+                      </Box>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </motion.div>
             ))
           ) : (
             <Box sx={{ py: 8, textAlign: 'center', width: '100%' }}>
@@ -316,8 +316,8 @@ function Workouts() {
               <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
                 Try adjusting your search or filters to find what you're looking for.
               </Typography>
-              <Button 
-                variant="outlined" 
+              <Button
+                variant="outlined"
                 onClick={() => {
                   setSearchTerm('');
                   setCategory('All');
@@ -329,7 +329,8 @@ function Workouts() {
               </Button>
             </Box>
           )}
-        </Grid>
+        </Box>
+
 
         {/* Pagination */}
         {filteredWorkouts.length > workoutsPerPage && (

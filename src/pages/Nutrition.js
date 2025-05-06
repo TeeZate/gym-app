@@ -81,7 +81,7 @@ const Nutrition = () => {
     {
       title: "Muscle Building",
       description: "High protein diet to support muscle growth",
-      image: "https://source.unsplash.com/random/300x200/?protein",
+      image: "images/meals/cd52d0747e3b41d38ce3b33ffaba7a9f.jpg",
       meals: [
         "Breakfast: Protein oatmeal with banana and nuts",
         "Snack: Greek yogurt with berries",
@@ -93,7 +93,7 @@ const Nutrition = () => {
     {
       title: "Fat Loss",
       description: "Calorie-controlled diet with balanced macros",
-      image: "https://source.unsplash.com/random/300x200/?salad",
+      image: "images/meals/tracking+calories+hero+image.jpg",
       meals: [
         "Breakfast: Egg white omelet with vegetables",
         "Snack: Apple with a small handful of almonds",
@@ -105,7 +105,7 @@ const Nutrition = () => {
     {
       title: "Maintenance",
       description: "Balanced nutrition for overall health",
-      image: "https://source.unsplash.com/random/300x200/?balanced-meal",
+      image: "images/meals/image-asset.jpeg",
       meals: [
         "Breakfast: Whole grain toast with avocado and eggs",
         "Snack: Fruit and nuts",
@@ -151,10 +151,29 @@ const Nutrition = () => {
           <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
             Recommended Meal Plans
           </Typography>
-          <Grid container spacing={4}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 4,
+              justifyContent: mealPlans.length === 0 ? 'center' : 'flex-start',
+            }}
+          >
             {mealPlans.map((plan, index) => (
-              <Grid item xs={12} md={4} key={index}>
-                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <Box
+                key={index}
+                sx={{
+                  flex: '1 1 calc(33.333% - 32px)', // 3 cards per row with 32px gap
+                  maxWidth: 'calc(33.333% - 32px)',
+                }}
+              >
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
                   <CardMedia
                     component="img"
                     height="200"
@@ -181,9 +200,10 @@ const Nutrition = () => {
                     </List>
                   </CardContent>
                 </Card>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
+
         </Box>
       )}
 

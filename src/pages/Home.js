@@ -149,47 +149,61 @@ function Home() {
             </Typography>
           </Box>
           
-          <Grid container spacing={4}>
-            {features.map((feature, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+          <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 4,
+            justifyContent: features.length === 0 ? 'center' : 'flex-start',
+          }}
+        >
+          {features.map((feature, index) => (
+            <Box
+              key={index}
+              sx={{
+                flex: '1 1 calc(25% - 32px)', // 4 per row with 32px gap
+                maxWidth: 'calc(25% - 32px)',
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textAlign: 'center',
+                    p: 3,
+                    borderRadius: 4,
+                  }}
+                  elevation={0}
                 >
-                  <Card 
-                    sx={{ 
-                      height: '100%', 
-                      display: 'flex', 
-                      flexDirection: 'column',
-                      textAlign: 'center',
-                      p: 3,
-                      borderRadius: 4
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      mb: 2,
+                      color: 'primary.main',
                     }}
-                    elevation={0}
                   >
-                    <Box 
-                      sx={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        mb: 2,
-                        color: 'primary.main'
-                      }}
-                    >
-                      {feature.icon}
-                    </Box>
-                    <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
-                      {feature.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {feature.description}
-                    </Typography>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
+                    {feature.icon}
+                  </Box>
+                  <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
+                    {feature.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {feature.description}
+                  </Typography>
+                </Card>
+              </motion.div>
+            </Box>
+          ))}
+        </Box>
+
         </Container>
       </Box>
 
