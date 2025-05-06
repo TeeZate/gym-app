@@ -8,7 +8,6 @@ import {
   Grid, 
   Card, 
   Stack,
-  useTheme
 } from '@mui/material';
 import { 
   FitnessCenter, 
@@ -43,7 +42,6 @@ const features = [
 ];
 
 function Home() {
-  const theme = useTheme();
   const featuresRef = useRef(null);
 
   const scrollToFeatures = () => {

@@ -21,7 +21,6 @@ import {
     Email
   } from '@mui/icons-material';
   import { Link as RouterLink } from 'react-router-dom';
-  import Logo from './Logo';
   
   function Footer() {
     return (
