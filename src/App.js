@@ -136,7 +136,7 @@ function App() {
           }}
         >
           {/* You can add a loading spinner or logo animation here */}
-          <img src="/logo.svg" alt="GYMFLEX" style={{ width: 150, height: 'auto' }} />
+          <img src="/images/logo.png" alt="GYMFLEX" style={{ width: 150, height: 'auto' }} />
         </Box>
       </ThemeProvider>
     );

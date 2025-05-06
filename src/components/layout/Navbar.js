@@ -65,7 +65,23 @@ function Navbar() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <FitnessCenter sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'primary.main' }} />
+            <Box 
+              component={RouterLink}
+              to="/" 
+              sx={{ 
+                height: 32, 
+                width: 'auto',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <img 
+                src="/images/logo.png" 
+                alt="GYMNY Logo"
+                style={{ height: '100%' }}
+              />
+            </Box>
           </motion.div>
           <Typography
             variant="h6"
@@ -129,25 +145,6 @@ function Navbar() {
               </List>
             </Drawer>
           </Box>
-          
-          <FitnessCenter sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'primary.main' }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component={RouterLink}
-            to="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: '.2rem',
-              color: 'text.primary',
-              textDecoration: 'none',
-            }}
-          >
-            GYMFLEX
-          </Typography>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (

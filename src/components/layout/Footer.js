@@ -38,9 +38,42 @@ import {
           <Grid container spacing={4}>
             {/* Logo and About */}
             <Grid item xs={12} md={4}>
-              <Box sx={{ mb: 3 }}>
-                <Logo />
+              <Box 
+                component={RouterLink}
+                to="/" 
+                sx={{ 
+                  height: 32, 
+                  width: 'auto',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center'
+                }}
+              >
+                <img 
+                  src="/images/logo.png" 
+                  alt="GYMNY Logo"
+                  style={{ height: '100%' }}
+                />
               </Box>
+
+              <Typography
+                variant="h6"
+                noWrap
+                component={RouterLink}
+                to="/"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontWeight: 700,
+                  letterSpacing: '.2rem',
+                  color: 'text.primary',
+                  textDecoration: 'none',
+                }}
+              >
+                GYMNY
+              </Typography>
+
               <Typography variant="body2" color="text.secondary" paragraph>
                 GYMNY is your ultimate fitness companion, offering personalized workouts, 
                 expert guidance, and a supportive community to help you achieve your fitness goals.
