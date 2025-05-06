@@ -35,12 +35,12 @@ const classesData = [
   {
     id: 1,
     title: 'High-Intensity Interval Training',
-    image: '/class-hiit.jpg',
+    image: '/images/classes/HIIT+training+(High-Intensity+Interval+Training).jpeg',
     category: 'Cardio',
     duration: '45 min',
     level: 'Intermediate',
     trainer: 'Sarah Johnson',
-    trainerImage: '/trainer-1.jpg',
+    trainerImage: '/images/1.jpg',
     schedule: 'Mon, Wed, Fri - 6:00 AM',
     rating: 4.8,
     participants: 12,
@@ -49,12 +49,12 @@ const classesData = [
   {
     id: 2,
     title: 'Yoga Flow',
-    image: '/class-yoga.jpg',
+    image: '/images/classes/DSC04767.jpg',
     category: 'Flexibility',
     duration: '60 min',
     level: 'All Levels',
     trainer: 'Michael Chen',
-    trainerImage: '/trainer-2.jpg',
+    trainerImage: '/images/2.jpg',
     schedule: 'Tue, Thu - 7:00 PM',
     rating: 4.9,
     participants: 15,
@@ -63,12 +63,12 @@ const classesData = [
   {
     id: 3,
     title: 'Strength & Conditioning',
-    image: '/class-strength.jpg',
+    image: '/images/classes/The_Gym_Group_Asset-Generic-Members_Doing_Alternate_Rope_Slams_At_A_Gym_Cardio_Class.jpg',
     category: 'Strength',
     duration: '50 min',
     level: 'Advanced',
     trainer: 'David Wilson',
-    trainerImage: '/trainer-3.jpg',
+    trainerImage: '/images/3.jpg',
     schedule: 'Mon, Wed, Fri - 5:30 PM',
     rating: 4.7,
     participants: 10,
@@ -77,12 +77,12 @@ const classesData = [
   {
     id: 4,
     title: 'Spin Cycle',
-    image: '/class-spin.jpg',
+    image: '/images/classes/7-Tips-to-help-you-get-started-with-indoor-cycling-thumbnail.jpg',
     category: 'Cardio',
     duration: '45 min',
     level: 'All Levels',
     trainer: 'Jessica Adams',
-    trainerImage: '/trainer-4.jpg',
+    trainerImage: '/images/4.jpg',
     schedule: 'Tue, Thu, Sat - 8:00 AM',
     rating: 4.6,
     participants: 20,
@@ -91,12 +91,12 @@ const classesData = [
   {
     id: 5,
     title: 'Pilates Core',
-    image: '/class-pilates.jpg',
+    image: '/images/classes/Types-of-Pilates-Complete-Pilates.jpg',
     category: 'Core',
     duration: '55 min',
     level: 'Intermediate',
     trainer: 'Emma Roberts',
-    trainerImage: '/trainer-5.jpg',
+    trainerImage: '/images/5.jpg',
     schedule: 'Mon, Wed - 9:00 AM',
     rating: 4.9,
     participants: 12,
@@ -105,12 +105,12 @@ const classesData = [
   {
     id: 6,
     title: 'Boxing Fundamentals',
-    image: '/class-boxing.jpg',
+    image: '/images/classes/boxing.jpg',
     category: 'Combat',
     duration: '60 min',
     level: 'Beginner',
     trainer: 'Marcus Johnson',
-    trainerImage: '/trainer-6.jpg',
+    trainerImage: '/images/6.jpg',
     schedule: 'Tue, Thu - 6:30 PM',
     rating: 4.7,
     participants: 14,
@@ -119,12 +119,12 @@ const classesData = [
   {
     id: 7,
     title: 'Zumba Dance',
-    image: '/class-zumba.jpg',
+    image: '/images/classes/zumba.JPG',
     category: 'Dance',
     duration: '50 min',
     level: 'All Levels',
     trainer: 'Sofia Rodriguez',
-    trainerImage: '/trainer-7.jpg',
+    trainerImage: '/images/7.JPG',
     schedule: 'Mon, Wed, Fri - 7:00 PM',
     rating: 4.8,
     participants: 25,
@@ -133,12 +133,12 @@ const classesData = [
   {
     id: 8,
     title: 'CrossFit Challenge',
-    image: '/class-crossfit.jpg',
+    image: '/images/classes/crossfit.webp',
     category: 'Strength',
     duration: '60 min',
     level: 'Advanced',
     trainer: 'Chris Evans',
-    trainerImage: '/trainer-8.jpg',
+    trainerImage: '/images/8.webp',
     schedule: 'Tue, Thu, Sat - 7:30 AM',
     rating: 4.6,
     participants: 15,
@@ -310,20 +310,41 @@ function Classes() {
         </Box>
 
         {/* Classes Grid */}
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: { xs: 2, sm: 3 },
+            justifyContent: filteredClasses.length === 0 ? 'center' : 'flex-start',
+          }}
+        >
           {filteredClasses.length > 0 ? (
             filteredClasses.map((classItem, index) => (
-              <Grid item xs={12} sm={6} md={4} key={classItem.id}>
+              <Box
+                key={classItem.id}
+                sx={{
+                  // Mobile first approach:
+                  // xs: 1 per row (100%)
+                  // sm: 2 per row (calc(50% - gap))
+                  // md: 3 per row (calc(33.333% - gap))
+                  width: {
+                    xs: '100%',
+                    sm: 'calc(50% - 24px)',
+                    md: 'calc(33.333% - 32px)',
+                  },
+                }}
+              >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
+                  style={{ height: '100%' }}
                 >
                   <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
                     <Box sx={{ position: 'relative' }}>
                       <CardMedia
                         component="img"
-                        height="200"
+                        height={{ xs: "180", sm: "200" }}
                         image={classItem.image}
                         alt={classItem.title}
                       />
@@ -334,13 +355,17 @@ function Classes() {
                           left: 16,
                           display: 'flex',
                           gap: 1,
+                          flexWrap: { xs: 'wrap', sm: 'nowrap' },
                         }}
                       >
                         <Chip 
                           label={classItem.category} 
                           color="primary" 
                           size="small"
-                          sx={{ borderRadius: 1 }}
+                          sx={{ 
+                            borderRadius: 1,
+                            fontSize: { xs: '0.7rem', sm: '0.75rem' }
+                          }}
                         />
                         <Chip 
                           label={classItem.level} 
@@ -349,13 +374,22 @@ function Classes() {
                           sx={{ 
                             borderRadius: 1, 
                             bgcolor: 'rgba(255,255,255,0.8)',
-                            backdropFilter: 'blur(4px)'
+                            backdropFilter: 'blur(4px)',
+                            fontSize: { xs: '0.7rem', sm: '0.75rem' }
                           }}
                         />
                       </Box>
                     </Box>
-                    <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                      <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 700 }}>
+                    <CardContent sx={{ flexGrow: 1, p: { xs: 2, sm: 3 } }}>
+                      <Typography 
+                        variant="h5" 
+                        component="h2" 
+                        gutterBottom 
+                        sx={{ 
+                          fontWeight: 700,
+                          fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' }
+                        }}
+                      >
                         {classItem.title}
                       </Typography>
                       
@@ -366,30 +400,51 @@ function Classes() {
                         </Typography>
                       </Box>
                       
-                      <Typography variant="body2" color="text.secondary" paragraph>
+                      <Typography 
+                        variant="body2" 
+                        color="text.secondary" 
+                        paragraph
+                        sx={{
+                          display: '-webkit-box',
+                          overflow: 'hidden',
+                          WebkitBoxOrient: 'vertical',
+                          WebkitLineClamp: { xs: 2, sm: 3 },
+                        }}
+                      >
                         {classItem.description}
                       </Typography>
                       
                       <Divider sx={{ my: 2 }} />
                       
-                      <Grid container spacing={2} sx={{ mb: 2 }}>
-                        <Grid item xs={6}>
-                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <AccessTime fontSize="small" color="action" sx={{ mr: 1 }} />
-                            <Typography variant="body2" color="text.secondary">
-                              {classItem.duration}
-                            </Typography>
-                          </Box>
-                        </Grid>
-                        <Grid item xs={6}>
-                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Person fontSize="small" color="action" sx={{ mr: 1 }} />
-                            <Typography variant="body2" color="text.secondary">
-                              {classItem.participants} spots
-                            </Typography>
-                          </Box>
-                        </Grid>
-                      </Grid>
+                      <Box 
+                        sx={{ 
+                          display: 'flex', 
+                          flexWrap: 'wrap',
+                          mb: 2,
+                          gap: 2
+                        }}
+                      >
+                        <Box sx={{ 
+                          display: 'flex', 
+                          alignItems: 'center',
+                          width: { xs: '100%', sm: 'calc(50% - 8px)' }
+                        }}>
+                          <AccessTime fontSize="small" color="action" sx={{ mr: 1 }} />
+                          <Typography variant="body2" color="text.secondary">
+                            {classItem.duration}
+                          </Typography>
+                        </Box>
+                        <Box sx={{ 
+                          display: 'flex', 
+                          alignItems: 'center',
+                          width: { xs: '100%', sm: 'calc(50% - 8px)' }
+                        }}>
+                          <Person fontSize="small" color="action" sx={{ mr: 1 }} />
+                          <Typography variant="body2" color="text.secondary">
+                            {classItem.participants} spots
+                          </Typography>
+                        </Box>
+                      </Box>
                       
                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                         <CalendarToday fontSize="small" color="action" sx={{ mr: 1 }} />
@@ -415,7 +470,7 @@ function Classes() {
                     </CardContent>
                   </Card>
                 </motion.div>
-              </Grid>
+              </Box>
             ))
           ) : (
             <Box sx={{ py: 8, textAlign: 'center', width: '100%' }}>
@@ -438,7 +493,8 @@ function Classes() {
               </Button>
             </Box>
           )}
-        </Grid>
+        </Box>
+
       </Container>
     </Box>
   );
