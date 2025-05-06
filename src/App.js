@@ -18,6 +18,7 @@ import Pricing from './pages/Pricing';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Nutrition from './pages/Nutrition';
 import NotFound from './pages/NotFound';
 
 // Create theme
@@ -152,6 +153,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/workouts" element={<Workouts />} />
               <Route path="/workouts/:id" element={<WorkoutDetail />} />
+              <Route path="/nutrition" element={<Nutrition />} />
               <Route path="/classes" element={<Classes />} />
               <Route path="/trainers" element={<Trainers />} />
               <Route path="/pricing" element={<Pricing />} />
