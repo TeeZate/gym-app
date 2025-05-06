@@ -37,9 +37,15 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const isLoggedIn = false; // Replace with actual auth state
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    anchorElNav && handleCloseNavMenu();
+    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
