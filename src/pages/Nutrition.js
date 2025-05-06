@@ -152,57 +152,73 @@ const Nutrition = () => {
             Recommended Meal Plans
           </Typography>
           <Box
-            sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 4,
-              justifyContent: mealPlans.length === 0 ? 'center' : 'flex-start',
-            }}
-          >
-            {mealPlans.map((plan, index) => (
-              <Box
-                key={index}
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: { xs: 2, sm: 3, md: 4 },
+            justifyContent: mealPlans.length === 0 ? 'center' : 'flex-start',
+          }}
+        >
+          {mealPlans.map((plan, index) => (
+            <Box
+              key={index}
+              sx={{
+                // Responsive layout:
+                // xs: 1 per row (100%)
+                // sm: 1 per row (100%)
+                // md: 2 per row (50%)
+                // lg: 3 per row (33.333%)
+                flex: {
+                  xs: '1 1 100%',
+                  sm: '1 1 100%',
+                  md: '1 1 calc(50% - 32px)',
+                  lg: '1 1 calc(33.333% - 32px)',
+                },
+                maxWidth: {
+                  xs: '100%',
+                  sm: '100%',
+                  md: 'calc(50% - 32px)',
+                  lg: 'calc(33.333% - 32px)',
+                },
+              }}
+            >
+              <Card
                 sx={{
-                  flex: '1 1 calc(33.333% - 32px)', // 3 cards per row with 32px gap
-                  maxWidth: 'calc(33.333% - 32px)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={plan.image}
-                    alt={plan.title}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {plan.title}
-                    </Typography>
-                    <Typography sx={{ mb: 2 }}>
-                      {plan.description}
-                    </Typography>
-                    <Divider sx={{ my: 2 }} />
-                    <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                      Sample Day:
-                    </Typography>
-                    <List dense>
-                      {plan.meals.map((meal, idx) => (
-                        <ListItem key={idx} sx={{ py: 0.5 }}>
-                          <ListItemText primary={meal} />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Box>
+                <CardMedia
+                  component="img"
+                  height={{ xs: "180", sm: "200" }}
+                  image={plan.image}
+                  alt={plan.title}
+                />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {plan.title}
+                  </Typography>
+                  <Typography sx={{ mb: 2 }}>
+                    {plan.description}
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
+                    Sample Day:
+                  </Typography>
+                  <List dense>
+                    {plan.meals.map((meal, idx) => (
+                      <ListItem key={idx} sx={{ py: 0.5 }}>
+                        <ListItemText primary={meal} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+        </Box>
+
 
         </Box>
       )}

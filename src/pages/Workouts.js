@@ -236,27 +236,37 @@ function Workouts() {
             </Grid>
           </Grid>
         </Box>
-
-        {/* Workouts Grid */}
         <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 3,
-            justifyContent: currentWorkouts.length === 0 ? 'center' : 'flex-start',
-          }}
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: { xs: 2, sm: 2, md: 3 },
+          justifyContent: currentWorkouts.length === 0 ? 'center' : 'flex-start',
+        }}
         >
-          {currentWorkouts.length > 0 ? (
-            currentWorkouts.map((workout, index) => (
+        {currentWorkouts.length > 0 ? (
+          currentWorkouts.map((workout, index) => (
+            <Box
+              key={workout.id}
+              sx={{
+                // Responsive layout:
+                // xs: 1 per row (100%)
+                // sm: 2 per row (50%)
+                // md: 3 per row (33.333%)
+                // lg: 4 per row (25%)
+                width: {
+                  xs: '100%',
+                  sm: 'calc(50% - 16px)',
+                  md: 'calc(33.333% - 24px)',
+                  lg: 'calc(25% - 24px)',
+                },
+              }}
+            >
               <motion.div
-                key={workout.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                style={{
-                  flex: '1 1 calc(25% - 24px)', // Adjust for 4 cards per row minus gap
-                  maxWidth: 'calc(25% - 24px)',
-                }}
+                style={{ height: '100%' }}
               >
                 <Card
                   sx={{
@@ -270,16 +280,43 @@ function Workouts() {
                   <CardActionArea component={RouterLink} to={`/workouts/${workout.id}`}>
                     <CardMedia
                       component="img"
-                      height="200"
+                      height={{ xs: "180", sm: "200" }}
                       image={workout.image}
                       alt={workout.title}
                     />
                     <CardContent sx={{ flexGrow: 1 }}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                        <Chip label={workout.category} size="small" color="primary" sx={{ borderRadius: 1 }} />
-                        <Chip label={workout.level} size="small" variant="outlined" sx={{ borderRadius: 1 }} />
+                      <Box sx={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between', 
+                        mb: 1,
+                        flexWrap: { xs: 'wrap', sm: 'nowrap' },
+                        gap: { xs: 1, sm: 0 }
+                      }}>
+                        <Chip 
+                          label={workout.category} 
+                          size="small" 
+                          color="primary" 
+                          sx={{ 
+                            borderRadius: 1,
+                            mb: { xs: 0.5, sm: 0 }
+                          }} 
+                        />
+                        <Chip 
+                          label={workout.level} 
+                          size="small" 
+                          variant="outlined" 
+                          sx={{ borderRadius: 1 }} 
+                        />
                       </Box>
-                      <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
+                      <Typography 
+                        variant="h6" 
+                        component="h2" 
+                        gutterBottom 
+                        sx={{ 
+                          fontWeight: 600,
+                          fontSize: { xs: '1rem', sm: '1.25rem' }
+                        }}
+                      >
                         {workout.title}
                       </Typography>
                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
@@ -306,29 +343,30 @@ function Workouts() {
                   </CardActionArea>
                 </Card>
               </motion.div>
-            ))
-          ) : (
-            <Box sx={{ py: 8, textAlign: 'center', width: '100%' }}>
-              <FitnessCenter sx={{ fontSize: 60, color: 'text.disabled', mb: 2 }} />
-              <Typography variant="h6" color="text.secondary" gutterBottom>
-                No workouts found
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                Try adjusting your search or filters to find what you're looking for.
-              </Typography>
-              <Button
-                variant="outlined"
-                onClick={() => {
-                  setSearchTerm('');
-                  setCategory('All');
-                  setLevel('All Levels');
-                  setDuration('All');
-                }}
-              >
-                Clear All Filters
-              </Button>
             </Box>
-          )}
+          ))
+        ) : (
+          <Box sx={{ py: 8, textAlign: 'center', width: '100%' }}>
+            <FitnessCenter sx={{ fontSize: 60, color: 'text.disabled', mb: 2 }} />
+            <Typography variant="h6" color="text.secondary" gutterBottom>
+              No workouts found
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+              Try adjusting your search or filters to find what you're looking for.
+            </Typography>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setSearchTerm('');
+                setCategory('All');
+                setLevel('All Levels');
+                setDuration('All');
+              }}
+            >
+              Clear All Filters
+            </Button>
+          </Box>
+        )}
         </Box>
 
 

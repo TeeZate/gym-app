@@ -150,59 +150,74 @@ function Home() {
           </Box>
           
           <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 4,
-            justifyContent: features.length === 0 ? 'center' : 'flex-start',
-          }}
-        >
-          {features.map((feature, index) => (
-            <Box
-              key={index}
-              sx={{
-                flex: '1 1 calc(25% - 32px)', // 4 per row with 32px gap
-                maxWidth: 'calc(25% - 32px)',
-              }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    textAlign: 'center',
-                    p: 3,
-                    borderRadius: 4,
-                  }}
-                  elevation={0}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      mb: 2,
-                      color: 'primary.main',
-                    }}
-                  >
-                    {feature.icon}
-                  </Box>
-                  <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
-                    {feature.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {feature.description}
-                  </Typography>
-                </Card>
-              </motion.div>
-            </Box>
-          ))}
-        </Box>
+ sx={{
+   display: 'flex',
+   flexWrap: 'wrap',
+   gap: { xs: 2, sm: 3, md: 4 },
+   justifyContent: features.length === 0 ? 'center' : 'flex-start',
+ }}
+>
+ {features.map((feature, index) => (
+   <Box
+     key={index}
+     sx={{
+       // Responsive layout:
+       // xs: 1 per row (100%)
+       // sm: 2 per row (50%)
+       // md: 3 per row (33%)
+       // lg: 4 per row (25%)
+       flex: {
+         xs: '1 1 100%',
+         sm: '1 1 calc(50% - 24px)',
+         md: '1 1 calc(33.333% - 32px)',
+         lg: '1 1 calc(25% - 32px)',
+       },
+       maxWidth: {
+         xs: '100%',
+         sm: 'calc(50% - 24px)',
+         md: 'calc(33.333% - 32px)',
+         lg: 'calc(25% - 32px)',
+       },
+     }}
+   >
+     <motion.div
+       initial={{ opacity: 0, y: 30 }}
+       whileInView={{ opacity: 1, y: 0 }}
+       transition={{ duration: 0.5, delay: index * 0.1 }}
+       viewport={{ once: true }}
+     >
+       <Card
+         sx={{
+           height: '100%',
+           display: 'flex',
+           flexDirection: 'column',
+           textAlign: 'center',
+           p: { xs: 2, sm: 3 },
+           borderRadius: 4,
+         }}
+         elevation={0}
+       >
+         <Box
+           sx={{
+             display: 'flex',
+             justifyContent: 'center',
+             mb: 2,
+             color: 'primary.main',
+           }}
+         >
+           {feature.icon}
+         </Box>
+         <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
+           {feature.title}
+         </Typography>
+         <Typography variant="body2" color="text.secondary">
+           {feature.description}
+         </Typography>
+       </Card>
+     </motion.div>
+   </Box>
+ ))}
+</Box>
 
         </Container>
       </Box>

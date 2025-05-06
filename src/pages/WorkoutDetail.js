@@ -55,63 +55,63 @@ const workoutData = {
     title: 'Certified Personal Trainer',
     experience: '8 years'
   },
-  image: '/workout-detail.jpg',
+  image: '/images/exercises/woman-training-weightlifting-gym_23-2149278028.jpg',
   exercises: [
     {
       name: 'Barbell Squats',
       sets: 4,
       reps: '10-12',
       rest: '90 sec',
-      image: '/exercise-1.jpg'
+      image: '/images/exercises/barbell-back-squat.jpg'
     },
     {
       name: 'Bench Press',
       sets: 4,
       reps: '8-10',
       rest: '90 sec',
-      image: '/exercise-2.jpg'
+      image: '/images/exercises/bench-press.jpg'
     },
     {
       name: 'Bent Over Rows',
       sets: 3,
       reps: '10-12',
       rest: '60 sec',
-      image: '/exercise-3.jpg'
+      image: '/images/exercises/bent-over-row-1590133418.jpg'
     },
     {
       name: 'Shoulder Press',
       sets: 3,
       reps: '10-12',
       rest: '60 sec',
-      image: '/exercise-4.jpg'
+      image: '/images/exercises/BlogShoulderPress-4.jpg'
     },
     {
       name: 'Romanian Deadlifts',
       sets: 3,
       reps: '10-12',
       rest: '90 sec',
-      image: '/exercise-5.jpg'
+      image: '/images/exercises/Romanian-deadlift-1024x926.jpg'
     },
     {
       name: 'Bicep Curls',
       sets: 3,
       reps: '12-15',
       rest: '45 sec',
-      image: '/exercise-6.jpg'
+      image: '/images/exercises/AdobeStock_186644984-TH-jpg.webp'
     },
     {
       name: 'Tricep Extensions',
       sets: 3,
       reps: '12-15',
       rest: '45 sec',
-      image: '/exercise-7.jpg'
+      image: '/images/exercises/tricep-extension.jpg'
     },
     {
       name: 'Plank',
       sets: 3,
       reps: '30-60 sec',
       rest: '30 sec',
-      image: '/exercise-8.jpg'
+      image: '/images/exercises/athletic-man-doing-the-plank-for-abs-and-core-royalty-free-image-1608652280.jpg'
     }
   ],
   benefits: [
@@ -377,48 +377,80 @@ function WorkoutDetail() {
         <Box sx={{ py: 2 }}>
           {/* Exercises Tab */}
           {tabValue === 0 && (
-            <Grid container spacing={3}>
-              {workout.exercises.map((exercise, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
+            <Box sx={{ mb: 4 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: { xs: 2, sm: 3 },
+                  justifyContent: 'flex-start',
+                }}
+              >
+                {workout.exercises.map((exercise, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      // Mobile first approach:
+                      // xs: 1 per row (100%)
+                      // sm: 2 per row (calc(50% - gap))
+                      // md: 3 per row (calc(33.333% - gap))
+                      width: {
+                        xs: '100%',
+                        sm: 'calc(50% - 24px)',
+                        md: 'calc(33.333% - 32px)',
+                      },
+                    }}
                   >
-                    <Card sx={{ height: '100%', borderRadius: 3 }}>
-                      <Box
-                        sx={{
-                          height: 160,
-                          overflow: 'hidden',
-                          position: 'relative',
-                          backgroundImage: `url(${exercise.image})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                        }}
-                      />
-                      <CardContent>
-                        <Typography variant="h6" component="h3" gutterBottom>
-                          {exercise.name}
-                        </Typography>
-                        <Box sx={{ mb: 1 }}>
-                          <Typography variant="body2" color="text.secondary">
-                            Sets: <Box component="span" fontWeight="medium">{exercise.sets}</Box>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      style={{ height: '100%' }}
+                    >
+                      <Card sx={{ height: '100%', borderRadius: 3 }}>
+                        <Box
+                          sx={{
+                            height: { xs: 140, sm: 160 },
+                            overflow: 'hidden',
+                            position: 'relative',
+                            backgroundImage: `url(${exercise.image})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }}
+                        />
+                        <CardContent>
+                          <Typography 
+                            variant="h6" 
+                            component="h3" 
+                            gutterBottom
+                            sx={{ 
+                              fontSize: { xs: '1rem', sm: '1.25rem' },
+                              fontWeight: 600
+                            }}
+                          >
+                            {exercise.name}
                           </Typography>
-                        </Box>
-                        <Box sx={{ mb: 1 }}>
+                          <Box sx={{ mb: 1 }}>
+                            <Typography variant="body2" color="text.secondary">
+                              Sets: <Box component="span" fontWeight="medium">{exercise.sets}</Box>
+                            </Typography>
+                          </Box>
+                          <Box sx={{ mb: 1 }}>
+                            <Typography variant="body2" color="text.secondary">
+                              Reps: <Box component="span" fontWeight="medium">{exercise.reps}</Box>
+                            </Typography>
+                          </Box>
                           <Typography variant="body2" color="text.secondary">
-                            Reps: <Box component="span" fontWeight="medium">{exercise.reps}</Box>
+                            Rest: <Box component="span" fontWeight="medium">{exercise.rest}</Box>
                           </Typography>
-                        </Box>
-                        <Typography variant="body2" color="text.secondary">
-                          Rest: <Box component="span" fontWeight="medium">{exercise.rest}</Box>
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+
           )}
 
           {/* Equipment Tab */}
