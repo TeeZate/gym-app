@@ -63,7 +63,7 @@ function Logo({ variant = "primary", size = "medium", showText = true }) {
               letterSpacing: '0.5px'
             }}
           >
-            GYMFLEX
+            GYMNY
           </Typography>
         )}
       </Box>

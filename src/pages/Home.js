@@ -126,26 +126,6 @@ function Home() {
                 </Stack>
               </motion.div>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <Box 
-                  component="img"
-                  src="/app-preview.png"
-                  alt="App Preview"
-                  sx={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: 4,
-                    boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-                    display: { xs: 'none', md: 'block' }
-                  }}
-                />
-              </motion.div>
-            </Grid>
           </Grid>
         </Container>
       </Box>
@@ -258,26 +238,6 @@ function Home() {
                 </Button>
               </motion.div>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <Box 
-                  component="img"
-                  src="/workout-programs.jpg"
-                  alt="Workout Programs"
-                  sx={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: 4,
-                    boxShadow: theme.shadows[10]
-                  }}
-                />
-              </motion.div>
-            </Grid>
           </Grid>
         </Container>
       </Box>
@@ -302,7 +262,7 @@ function Home() {
               Ready to Start Your Fitness Journey?
             </Typography>
             <Typography variant="h6" paragraph sx={{ mb: 4, opacity: 0.9 }}>
-              Join thousands of users who have transformed their bodies and lives with GYMFLEX
+              Join thousands of users who have transformed their bodies and lives with GYMNY
             </Typography>
             <Button 
               variant="contained" 

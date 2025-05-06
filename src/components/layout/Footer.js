@@ -42,7 +42,7 @@ import {
                 <Logo />
               </Box>
               <Typography variant="body2" color="text.secondary" paragraph>
-                GYMFLEX is your ultimate fitness companion, offering personalized workouts, 
+                GYMNY is your ultimate fitness companion, offering personalized workouts, 
                 expert guidance, and a supportive community to help you achieve your fitness goals.
               </Typography>
               <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
@@ -161,7 +161,7 @@ import {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Email color="action" sx={{ mr: 1 }} fontSize="small" />
                 <Typography variant="body2" color="text.secondary">
-                  info@gymflex.com
+                  info@gymny.com
                 </Typography>
               </Box>
             </Grid>
@@ -172,7 +172,7 @@ import {
           {/* Bottom Footer */}
           <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant="body2" color="text.secondary">
-              © {new Date().getFullYear()} GYMFLEX. All rights reserved.
+              © {new Date().getFullYear()} GYMNY. All rights reserved.
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
               <Link 

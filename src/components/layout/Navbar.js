@@ -81,7 +81,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            GYMFLEX
+            GYMNY
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
