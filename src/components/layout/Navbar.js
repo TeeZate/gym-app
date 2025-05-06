@@ -22,7 +22,6 @@ import {
   Menu as MenuIcon, 
   FitnessCenter, 
   Restaurant, 
-  Person, 
   Login, 
   Close 
 } from '@mui/icons-material';
@@ -35,14 +34,10 @@ const pages = [
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const isLoggedIn = false; // Replace with actual auth state
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
