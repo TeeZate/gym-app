@@ -22,7 +22,9 @@ import {
   Menu as MenuIcon, 
   FitnessCenter, 
   Restaurant, 
-  Login, 
+  Login,
+  HowToReg,
+  Group, 
   Close 
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
@@ -30,6 +32,8 @@ import { motion } from 'framer-motion';
 const pages = [
   { title: 'Workouts', path: '/workouts', icon: <FitnessCenter /> },
   { title: 'Nutrition', path: '/nutrition', icon: <Restaurant /> },
+  { title: 'Classes', path: '/classes', icon: <Group /> },
+  { title: 'Register', path: '/register', icon: <HowToReg/> },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
