@@ -50,7 +50,7 @@ const workoutData = {
   userReviews: 124,
   equipment: ['Dumbbells', 'Barbell', 'Bench', 'Resistance Bands'],
   trainer: {
-    name: 'Alex Johnson',
+    name: 'Tino Zate',
     image: '/trainer-1.jpg',
     title: 'Certified Personal Trainer',
     experience: '8 years'
@@ -122,21 +122,21 @@ const workoutData = {
   ],
   reviews: [
     {
-      user: 'Michael S.',
+      user: 'Freeman S.',
       avatar: '/user-1.jpg',
       rating: 5,
       date: '2 weeks ago',
       comment: 'Great full body workout! Ive been doing this 3 times a week for a month and already seeing significant gains.'
     },
     {
-      user: 'Sarah L.',
+      user: 'Tawanda T.',
       avatar: '/user-2.jpg',
       rating: 4,
       date: '1 month ago',
       comment: 'Really challenging but effective. I modified some exercises to match my fitness level.'
     },
     {
-      user: 'David K.',
+      user: 'David Kwangware.',
       avatar: '/user-3.jpg',
       rating: 5,
       date: '2 months ago',
