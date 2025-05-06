@@ -122,33 +122,6 @@ import {
               </Box>
             </Grid>
   
-            {/* Support */}
-            <Grid item xs={12} sm={6} md={2}>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>
-                Support
-              </Typography>
-              <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
-                {['FAQ', 'Help Center', 'Privacy Policy', 'Terms of Service', 'Careers', 'Blog'].map((item) => (
-                  <Box component="li" key={item} sx={{ mb: 1 }}>
-                    <Link 
-                      component={RouterLink} 
-                      to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                      color="text.secondary"
-                      sx={{ 
-                        textDecoration: 'none',
-                        '&:hover': {
-                          color: 'primary.main',
-                          textDecoration: 'underline'
-                        }
-                      }}
-                    >
-                      {item}
-                    </Link>
-                  </Box>
-                ))}
-              </Box>
-            </Grid>
-  
             {/* Newsletter and Contact */}
             <Grid item xs={12} md={4}>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>
